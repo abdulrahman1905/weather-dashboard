@@ -5,7 +5,7 @@ const router = express.Router()
 const {getCityCoordinates, getCurrentWeather, getHourForcast} = require('../controllers/weatherController')
 
 router.get('/geolocate/:city', getCityCoordinates)
-router.get('/current', getCurrentWeather)
-router.get('/hourly', getHourForcast)
+router.get('/current/:lat/:lon', getCurrentWeather)
+router.get('/hourly/:lat/:lon', getHourForcast)
 
 module.exports = router

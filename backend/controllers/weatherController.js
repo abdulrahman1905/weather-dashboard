@@ -4,13 +4,12 @@ const axios = require('axios')
 // @Route   api/weather/geolocate/:city
 // @Access  Public
 const getCityCoordinates = async (req, res) => {
-  const city = req.params.city
   const config = {
     url: '/direct',
     method: 'get',
     baseURL: 'http://api.openweathermap.org/geo/1.0',
     params: {
-      q: city,
+      q: req.params.city,
       appid: process.env.API_KEY,
     }
   }
@@ -28,7 +27,7 @@ const getCityCoordinates = async (req, res) => {
     } else if (response.data.message) {
       res.status(400).json(response.data.message)
     } else {
-      res.status(400).json({ message: 'City data not found' })
+      res.status(400).json({ message: 'Weather data not found for ' + req.params.city + '. Please enter a valid city name.' })
     }
   } catch (error) {
     res.status(400).json({
@@ -46,15 +45,13 @@ const getCityCoordinates = async (req, res) => {
 // @Route   api/weather/current
 // @Access  Public
 const getCurrentWeather = async (req, res) => {
-  const { lat, lon } = req.body
-
   const config = {
     url: '/weather',
     method: 'get',
     baseURL: 'https://api.openweathermap.org/data/2.5',
     params: {
-      lat: lat,
-      lon: lon,
+      lat: req.params.lat,
+      lon: req.params.lon,
       appid: process.env.API_KEY,
       units: 'metric',
     }
@@ -67,7 +64,7 @@ const getCurrentWeather = async (req, res) => {
     } else if (response.data.message) {
       res.status(400).json(response.data.message)
     } else {
-      res.status(400).json({ message: 'No data found for the city' })
+      res.status(400).json({ message: 'Weather data not found for ' + req.params.city })
     }
   } catch (error) {
     res.status(400).json({
@@ -85,18 +82,16 @@ const getCurrentWeather = async (req, res) => {
 // @Route   api/weather/hourly
 // @Access  Public
 const getHourForcast = async (req, res) => {
-    const { lat, lon } = req.body
-
     const config = {
       url: '/forecast',
       method: 'get',
       baseURL: 'https://api.openweathermap.org/data/2.5',
       params: {
-        lat: lat,
-        lon: lon,
+        lat: req.params.lat,
+        lon: req.params.lon,
         appid: process.env.API_KEY,
         units: 'metric',
-        cnt: 8
+        cnt: 9
       }
     }
     try {
@@ -107,7 +102,7 @@ const getHourForcast = async (req, res) => {
       } else if (response.data.message) {
         res.status(400).json(response.data.message)
       } else {
-        res.status(400).json({ message: 'No data found for the city' })
+        res.status(400).json({ message: 'Weather data not found for ' + req.params.city })
       }
     } catch (error) {
       res.status(400).json({

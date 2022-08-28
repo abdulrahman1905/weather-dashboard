@@ -1,23 +1,46 @@
 import axios from 'axios'
 
-const getWeatherData = async (lat, lon) => {
-    const config = {
-        method: 'get',
-        url: '/weather',
-        baseURL: 'https://api.openweathermap.org/data/2.5',
-        params: {
-            lat: lat,
-            lon: lon,
-            appid: process.env.API_KEY 
-        }
-    }
+const API_URL = '/api/weather/'
 
-    const response = await axios(config)
+//HTML5 Geolocation API with Promise
+const getCoordinates = () => {
+    return new Promise( (resolve, reject) => {
+        navigator.geolocation.getCurrentPosition(
+            position => resolve(position),
+            error => reject(error)
+        )
+    })
+}
+
+//Get city coordinates
+const getCityCoordinates = async (city) => {
+    const response = await axios.get(`${API_URL}geolocate/${city}`)
+
     return response.data
 }
 
+//Get current weather data only from coordinates
+const getCurrentWeatherData = async (coord) => {
+    const response = await axios.get(`${API_URL}current/${coord.lat}/${coord.lon}`)
+    
+
+    return response.data
+}
+
+//Get current weather data only from coordinates
+const getHourlyWeatherData = async (coord) => {
+    const response = await axios.get(`${API_URL}hourly/${coord.lat}/${coord.lon}`)
+
+    return response.data
+}
+
+
+
 const weatherService = {
-    getWeatherData
+  getCoordinates,
+  getCityCoordinates,
+  getCurrentWeatherData,
+  getHourlyWeatherData
 }
 
 export default weatherService

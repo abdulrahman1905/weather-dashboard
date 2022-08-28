@@ -1,18 +1,19 @@
 import Stack from 'react-bootstrap/Stack'
+import service from '../extras/service'
 
-const LocationInfo = () => {
+const LocationInfo = ({data}) => {  
   return (
     <Stack className="pb-4">
       <div className="text-center">
-        <h2 className="fw-light">
-          <i className="bi bi-geo-alt"></i> Espoo, Finland
-        </h2>
+        <h1 className="pb-2 fw-light">
+          <i className="bi bi-geo-alt"></i> {data.name}, {data.sys.country}
+        </h1>
       </div>
       <div className="text-center">
-        <p className="mb-0">Wednesday, 17 August</p>
+        <p className="mb-0">{service.getLocalDate(data.timezone)}</p>
       </div>
       <div className="text-center">
-        <h3 className="fw-light">9:45:00 PM</h3>
+        <h4 className="fw-light">Local Time: {service.getLocalTime(data.timezone)}</h4>
       </div>
     </Stack>
   )

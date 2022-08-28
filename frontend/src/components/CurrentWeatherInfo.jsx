@@ -1,24 +1,19 @@
 import React from 'react'
+import service from '../extras/service'
 
-const CurrentWeatherInfo = () => {
+const CurrentWeatherInfo = ({data}) => {
   return (
     <div>
       <div className="text-center">
-        <h1 className="fw-bold">
-          <i className="bi bi-thermometer"></i>25&deg;C
+        <h1 className="fw-normal">
+          <i className="bi bi-thermometer"></i>{Math.round(data.main.temp)}&deg;C
         </h1>
       </div>
       <div className="text-center pb-1">
-        <span className="pe-2">
-          <i className="bi bi-arrow-up"></i>25&deg;C
-        </span>
-
-        <span className="ps-2">
-          <i className="bi bi-arrow-down"></i>18&deg;C
-        </span>
+        <h6 className='fw-normal'>Feels like {Math.round(data.main.feels_like)}&deg;C</h6>
       </div>
       <div className="text-center">
-        <h3 className="fw-normal">Rainy</h3>
+        <h3 className="fw-light">{service.capitalize(data.weather[0].description)}</h3>
       </div>
     </div>
   )
