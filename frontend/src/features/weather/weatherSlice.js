@@ -10,6 +10,11 @@ const initialState = {
   message: '',
 }
 
+//1. Get coordinates with
+//...HTML5 Geolocation API or
+//...OpenWeatherMap Geocoding API from city name
+//2. Get weather data using the coordinates from 1
+
 export const getWeatherData = createAsyncThunk(
   'weather/getWeatherData',
   async (city, thunkAPI) => {
@@ -19,23 +24,16 @@ export const getWeatherData = createAsyncThunk(
     try {
       if (city) {
         coord = await weatherService.getCityCoordinates(city)
-        console.log(coord)
-        console.log('By city name')
       } else {
         const position = await weatherService.getCoordinates()
         coord = {
           lat: position.coords.latitude,
           lon: position.coords.longitude
         }
-        console.log(coord)
-        console.log('HTML5 Geolocation API')
       }
       if(coord){
         currentWeatherData = await weatherService.getCurrentWeatherData(coord)
-        console.log(currentWeatherData)
         hourlyWeatherData = await weatherService.getHourlyWeatherData(coord)
-        console.log(hourlyWeatherData)
-        console.log({currentWeatherData, hourlyWeatherData})
         return {currentWeatherData, hourlyWeatherData}
       }
     } catch (error) {

@@ -2,7 +2,7 @@ import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import InputGroup from 'react-bootstrap/InputGroup'
 import { useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { reset, getWeatherData } from '../features/weather/weatherSlice'
 
 
@@ -11,7 +11,6 @@ const SearchForm = () => {
   const [city, setCity] = useState('')
 
   const dispatch = useDispatch()
-  const {isLoading, isError, message} = useSelector((state) => state.weather)
 
   const inputChangeHandler = (e) => {
     setCity(e.target.value)

@@ -8,7 +8,7 @@ import CurrentWeatherInfo from '../components/CurrentWeatherInfo'
 import MoreWeatherInfo from '../components/MoreWeatherInfo'
 import HourInfo from '../components/HourInfo'
 import { useEffect } from 'react'
-import { getWeatherData, reset } from '../features/weather/weatherSlice'
+import { getWeatherData } from '../features/weather/weatherSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import LoadSpinner from '../components/Spinner'
 import ErrorAlert from '../components/ErrorAlert'
@@ -18,9 +18,7 @@ const DashBoard = () => {
   const {
     currentWeatherData,
     hourlyWeatherData,
-    isError,
     isLoading,
-    isSuccess,
     message,
   } = useSelector((state) => state.weather)
 
