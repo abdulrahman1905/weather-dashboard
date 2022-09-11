@@ -26,5 +26,5 @@ Runs the client side in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 ### `Demo`
-Check out the live app from the link below
-[https://myweatherdashboard.herokuapp.com/]
+Check out the live app from the link below.\
+[https://myweatherdashboard.herokuapp.com/](https://myweatherdashboard.herokuapp.com/)
