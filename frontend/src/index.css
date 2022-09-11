@@ -1,3 +1,6 @@
+.passage {
+    text-align: justify;
+}
 .center-vertically {
     display: flex;
     justify-content: center;

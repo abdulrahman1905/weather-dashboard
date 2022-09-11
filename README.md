@@ -8,13 +8,17 @@ The React frontend utilized the Redux Toolkit
 
 The app uses a simple Express backend in order to protect the API KEY from the React frontend. Include your OpenWeatherMap API key as API_KEY in your .env file
 
+## Install dependencies
+
+### `npm install`
+
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `npm run client`
+### `npm run server`
 
-Runs the server on port 5000
+Runs the server on port 5000 with nodemon
 
 ### `npm run client`
 

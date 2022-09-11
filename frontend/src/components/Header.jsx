@@ -12,7 +12,7 @@ const Header = () => {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="ms-auto">
               <Nav.Link as={Link} to='/about'>About</Nav.Link>
-              <Nav.Link href="https://github.com/abdulrahman1905/weather-dashboard">GitHub</Nav.Link>
+              <Nav.Link href="https://github.com/abdulrahman1905/weather-dashboard" target="_blank" >GitHub</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
