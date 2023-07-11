@@ -1,6 +1,6 @@
 # Weather Dasboard
 
-Weather dashboard is a single page web application built with MERN stack. It uses weather data that is been fetched from OpenWeatherMap API free snscription. It displays the current weather condition and 3 hours step 24 hours weather forcast for a particular location. It can detect the users location using the HTML5 Geocoding API. The user can also do a munual search of any city of choice.
+Weather dashboard is a single page web application built with MERN stack. It uses weather data that is been fetched from OpenWeatherMap API free subcription. It displays the current weather condition and 3 hours step 24 hours weather forcast for a particular location. It can detect the users location using the HTML5 Geocoding API. The user can also do a munual search of any city of choice.
 
 The React frontend utilized the Redux Toolkit
 
